@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   Image,
@@ -7,23 +7,26 @@ import {
   SafeAreaView,
   Button,
   StyleSheet,
-} from 'react-native';
-import cartStore from '../stores/cartStore';
-import productStore from '../stores/productStore';
+} from "react-native";
+import cartStore from "../stores/cartStore";
+import productStore from "../stores/productStore";
 
-export function ProductDetails() {
-  const product = productStore.getProductById(1);
+export default function ProductDetails({ route }) {
+  const { product, id } = route.params;
+  const products = productStore.getProductById(id);
   return (
     <SafeAreaView>
       <ScrollView>
-        <Image style={styles.image} source={product.image} />
+        <Image style={styles.image} source={products.image} />
+
         <View style={styles.infoContainer}>
-          <Text style={styles.name}>{product.name}</Text>
-          <Text style={styles.price}>$ {product.price}</Text>
-          <Text style={styles.description}>{product.description}</Text>
+          <Text style={styles.name}>{products.name}</Text>
+          <Text style={styles.price}>$ {products.price}</Text>
+          <Text style={styles.description}>{products.description}</Text>
+
           <Button
             onPress={() => {
-              cartStore.addItem(product);
+              cartStore.addItem(products);
             }}
             title="Add to cart"
           />
@@ -35,11 +38,11 @@ export function ProductDetails() {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 16,
     shadowOpacity: 0.2,
     shadowRadius: 4,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       height: 0,
       width: 0,
@@ -49,24 +52,24 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 300,
-    width: '100%',
+    width: "100%",
   },
   infoContainer: {
     padding: 16,
   },
   name: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   price: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 8,
   },
   description: {
     fontSize: 16,
-    fontWeight: '400',
-    color: '#787878',
+    fontWeight: "400",
+    color: "#787878",
     marginBottom: 16,
   },
 });

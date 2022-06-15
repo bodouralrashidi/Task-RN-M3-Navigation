@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, Image, View, StyleSheet, TouchableOpacity } from 'react-native';
-import productStore from '../stores/productStore';
+import React from "react";
+import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
+import productStore from "../stores/productStore";
 
 export function Product({ product, onPress }) {
   return (
@@ -16,11 +16,11 @@ export function Product({ product, onPress }) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 16,
     shadowOpacity: 0.2,
     shadowRadius: 4,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       height: 0,
       width: 0,
@@ -32,18 +32,18 @@ const styles = StyleSheet.create({
     height: 260,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
-    width: '100%',
+    width: "100%",
   },
   infoContainer: {
     padding: 16,
   },
   name: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   price: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 8,
   },
 });

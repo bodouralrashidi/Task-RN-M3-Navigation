@@ -1,8 +1,10 @@
-import { Cart } from './components/Cart';
-import { Product } from './components/Product';
-import { ProductDetails } from './components/ProductDetail';
-import { ProductsList } from './components/ProductsList';
+import { NavigationContainer } from "@react-navigation/native";
+import RootNavigator from "./components/navigation/RootNavigator";
 
 export default function App() {
-  return <ProductsList />;
+  return (
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
+  );
 }

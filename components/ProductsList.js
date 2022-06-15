@@ -1,14 +1,24 @@
-import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import React from "react";
+import { FlatList, StyleSheet } from "react-native";
+import productStore from "../stores/productStore.js";
+import { Product } from "./Product.js";
 
-import productStore from '../stores/productStore.js';
-import { Product } from './Product.js';
-
-export function ProductsList() {
+export default function ProductsList({ navigation }) {
   const products = productStore.getProducts();
 
   function renderProduct({ item: product }) {
-    return <Product product={product} onPress={() => {}} />;
+    return (
+      <Product
+        product={product}
+        key={product.id}
+        onPress={() => {
+          navigation.navigate("ProductDetails", {
+            product: product,
+            id: product.id,
+          });
+        }}
+      />
+    );
   }
 
   return (
@@ -23,10 +33,10 @@ export function ProductsList() {
 
 const styles = StyleSheet.create({
   productsList: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: "#eeeeee",
   },
   productsListContainer: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: "#eeeeee",
     paddingVertical: 8,
     marginHorizontal: 8,
   },
